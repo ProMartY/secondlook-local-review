@@ -1,0 +1,13 @@
+node_modules/
+.cache/
+.env
+.env.*
+!.env.example
+.npmrc
+npm-debug.log*
+*.local
+docs/DEV-DRAFT.txt
+docs/SUBMISSION-CHECKLIST.txt
+proof/
+*.mp4
+*.zip

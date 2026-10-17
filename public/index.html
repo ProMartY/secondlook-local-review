@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local invoice comparison workspace with open-model semantic matching and human review.">
+  <title>SecondLook — Invoice review</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="wordmark" href="#top" aria-label="SecondLook home"><span class="mark" aria-hidden="true">s<span>l</span></span>SecondLook<span class="wordmark-dot">.</span></a>
+    <div class="sidebar-label">YOUR WORKSPACE</div>
+    <a class="nav-item active" href="#workspace"><span aria-hidden="true">▤</span> Invoice review <span class="nav-number">01</span></a>
+    <a class="nav-item" href="#method"><span aria-hidden="true">◎</span> How it works</a>
+    <div class="sidebar-bottom"><span class="local-light"></span><div><strong>Local by design</strong><p>CSV data stays on this computer.</p></div></div>
+  </aside>
+
+  <main id="top">
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> Invoice review</div><button id="clear-session" class="text-button" type="button">Clear session</button></header>
+    <section class="intro" id="workspace">
+      <div><div class="eyebrow">A SECOND LOOK, BEFORE THE NEXT STEP</div><h1>Review possible<br>duplicate invoices.</h1><p class="lede">Same service. Different wording. Compare the evidence<br class="desktop-break"> and decide what needs a closer look.</p></div>
+      <div class="intro-note"><span class="orbit" aria-hidden="true"><i></i><i></i></span><p><strong>Related words are a clue.</strong><br>Every flagged pair stays<br>under your control.</p></div>
+    </section>
+
+    <section class="workspace-grid">
+      <article class="input-panel panel" aria-labelledby="input-title">
+        <div class="panel-header"><div><div class="step-label">01 / SOURCE</div><h2 id="input-title">Load your invoices</h2></div><button id="use-sample" class="small-button" type="button">Use sample <span aria-hidden="true">↗</span></button></div>
+        <label class="dropzone" id="dropzone"><input type="file" id="csv-file" accept=".csv,text/csv"><span class="file-icon" aria-hidden="true">↥</span><strong>Choose a CSV file</strong><span>or drop one here · up to 150 rows</span></label>
+        <details class="paste-section" open><summary>Or paste CSV text</summary><label for="csv-input" class="sr-only">Invoice CSV</label><textarea id="csv-input" spellcheck="false" placeholder="id,vendor,date,currency,amount,description&#10;INV-001,Your studio,2026-10-01,USD,480,Landing page updates"></textarea></details>
+        <div class="input-caption"><span id="source-label">No source loaded</span><span>UTF-8 · 256 KB max</span></div>
+        <details class="column-help"><summary>Required columns</summary><p><code>id, vendor, date, currency, amount, description</code></p><p>Use YYYY-MM-DD dates, three-letter currencies and decimal amounts. One invoice per row.</p></details>
+        <button id="analyze" class="primary-button" type="button" disabled><span id="analyze-label">Find possible duplicates</span><span class="button-arrow" aria-hidden="true">→</span></button>
+        <div id="run-status" class="run-status" role="status" aria-live="polite">Open model. Local comparison. Human review.</div>
+        <div id="input-error" class="error-box" role="alert" hidden></div>
+      </article>
+
+      <article class="overview-panel panel" aria-labelledby="overview-title">
+        <div class="panel-header"><div><div class="step-label">02 / OVERVIEW</div><h2 id="overview-title">Your review, at a glance</h2></div><span class="session-chip">SESSION ONLY</span></div>
+        <div class="metrics"><div><span class="metric-label">Invoices checked</span><strong id="metric-rows">—</strong></div><div><span class="metric-label">Possible pairs</span><strong id="metric-candidates">—</strong></div><div><span class="metric-label">Pairs reviewed</span><strong id="metric-reviewed">—</strong></div></div>
+        <div id="overview-empty" class="overview-empty"><div class="ledger-art" aria-hidden="true"><div><i></i><span></span><b></b></div><div class="highlight-row"><i></i><span></span><b></b></div><div><i></i><span></span><b></b></div><div class="highlight-row"><i></i><span></span><b></b></div><div><i></i><span></span><b></b></div><span class="ledger-link">↔</span></div><h3>A smaller pile to review.</h3><p>Load a CSV to find repeated invoice IDs and<br>related descriptions worth comparing.</p></div>
+        <div id="overview-result" hidden><p id="result-summary" class="result-summary"></p><div id="stage-list" class="stage-list"></div><div class="download-row"><button id="export-csv" class="secondary-button" type="button">Download review CSV <span aria-hidden="true">↓</span></button><button id="export-json" class="small-button" type="button">JSON report</button></div><p class="muted-small">Download your review before closing. No invoices or review decisions are saved by the app.</p></div>
+      </article>
+    </section>
+
+    <section id="review-section" class="review-section" hidden aria-labelledby="review-title">
+      <div class="section-heading"><div><div class="step-label">03 / HUMAN REVIEW</div><h2 id="review-title">Look at both sides.</h2></div><div class="filter-control"><label for="review-filter">Show</label><select id="review-filter"><option value="all">All pairs</option><option value="pending">Unreviewed</option><option value="duplicate">Marked duplicate</option><option value="distinct">Keep both</option><option value="needs_context">Needs context</option></select></div></div>
+      <div class="review-grid"><div id="candidate-list" class="candidate-list" aria-label="Candidate invoice pairs"></div><article id="pair-detail" class="pair-detail panel" aria-live="polite"></article></div>
+    </section>
+
+    <section id="method" class="method-section"><div><div class="step-label">THE METHOD</div><h2>Evidence first.<br>Decisions stay yours.</h2></div><div class="method-grid"><div><span>01</span><h3>Start with the details</h3><p>Compare the same vendor and currency. Related descriptions are only considered when amounts are within one cent and dates are at most 14 days apart.</p></div><div><span>02</span><h3>Read beyond exact words</h3><p>A small open model compares the meaning of descriptions. Repeated invoice IDs are flagged separately, including older records.</p></div><div><span>03</span><h3>Keep the context</h3><p>Two legitimate invoices can look alike. Check scope, service periods and payment records before you act. The app never changes a payment.</p></div></div></section>
+    <footer><span>SecondLook / an independent open-source prototype</span><span>No account · No paid API · No analytics</span></footer>
+  </main>
+</body>
+</html>

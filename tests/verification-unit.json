@@ -1,0 +1,11 @@
+{
+  "testedAt": "2026-10-17T20:30:17.841360+00:00",
+  "command": "node --test tests/*.test.js",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "tests": 27,
+  "passed": 27,
+  "failed": 0,
+  "exitCode": 0,
+  "note": "HTTP tests connect only to an ephemeral 127.0.0.1 port. This test execution required sandbox network permission for loopback connections. Model downloads are not part of these tests; the actual Mastra workflow uses a deterministic embedding stub here. Separate real-model integration reports verify actual local inference."
+}

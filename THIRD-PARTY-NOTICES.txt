@@ -1,0 +1,28 @@
+SecondLook dependencies and model attribution
+
+The source archive does not bundle node_modules or model weights. A fresh installation retrieves these separately, with dependency integrity recorded in package-lock.json.
+
+Mastra core 1.78.0 — Apache-2.0
+https://github.com/mastra-ai/mastra
+https://github.com/mastra-ai/mastra/blob/main/LICENSE.md
+
+Transformers.js 3.8.1 — Apache-2.0
+https://github.com/huggingface/transformers.js
+https://github.com/huggingface/transformers.js/blob/main/LICENSE
+
+Xenova/all-MiniLM-L6-v2 — Apache-2.0, ONNX conversion of sentence-transformers/all-MiniLM-L6-v2
+https://huggingface.co/Xenova/all-MiniLM-L6-v2
+https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+Pinned model revision: 6fa4bf687ce79106377b66d10009c0e513715e24
+Quantized ONNX weights SHA256: afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1
+
+ONNX Runtime Node 1.21.0 — MIT
+https://github.com/microsoft/onnxruntime
+
+csv-parse 6.1.0 — MIT
+https://github.com/adaltas/node-csv
+
+Zod 4.6.7 — MIT
+https://github.com/colinhacks/zod
+
+All other transitive dependencies retain the licenses included in their installed packages. SecondLook's MIT license covers only its original project code, not a relicensing of these components.

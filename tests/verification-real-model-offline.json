@@ -1,0 +1,67 @@
+{
+  "test": "real-open-model-mastra-integration",
+  "testedAt": "2026-10-17T20:01:15.771Z",
+  "passed": true,
+  "syntheticOnly": true,
+  "node": "v24.19.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "modelState": {
+    "id": "Xenova/all-MiniLM-L6-v2",
+    "revision": "6fa4bf687ce79106377b66d10009c0e513715e24",
+    "state": "ready",
+    "progress": null,
+    "engine": "Transformers.js / ONNX Runtime / CPU",
+    "dtype": "q8",
+    "inference": "local",
+    "dimensions": 384,
+    "offline": true
+  },
+  "runId": "22117355-a766-4ab3-8808-a1c3d8239045",
+  "model": {
+    "id": "Xenova/all-MiniLM-L6-v2",
+    "revision": "6fa4bf687ce79106377b66d10009c0e513715e24",
+    "engine": "Transformers.js / ONNX Runtime / CPU",
+    "dtype": "q8",
+    "inference": "local"
+  },
+  "summary": {
+    "rows": 8,
+    "candidates": 2,
+    "semanticCandidates": 1,
+    "exactCandidates": 1
+  },
+  "stages": [
+    {
+      "name": "Parse CSV",
+      "durationMs": 1
+    },
+    {
+      "name": "Validate invoices",
+      "durationMs": 0
+    },
+    {
+      "name": "Embed descriptions locally",
+      "durationMs": 228
+    },
+    {
+      "name": "Build review queue",
+      "durationMs": 0
+    }
+  ],
+  "candidates": [
+    {
+      "id": "pair-5-6",
+      "kind": "exact",
+      "similarity": 0.0124
+    },
+    {
+      "id": "pair-2-3",
+      "kind": "semantic",
+      "similarity": 0.9615
+    }
+  ],
+  "timing": {
+    "totalMs": 237
+  }
+}

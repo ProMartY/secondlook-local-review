@@ -1,0 +1,115 @@
+{
+  "test": "public-sample-real-open-model",
+  "testedAt": "2026-10-17T20:01:39.024Z",
+  "passed": true,
+  "syntheticOnly": true,
+  "caveat": "Twelve synthetic invoices with two predefined positive pairs and several negative controls are a functional fixture, not a production accuracy benchmark.",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "modelState": {
+    "id": "Xenova/all-MiniLM-L6-v2",
+    "revision": "6fa4bf687ce79106377b66d10009c0e513715e24",
+    "state": "ready",
+    "progress": null,
+    "engine": "Transformers.js / ONNX Runtime / CPU",
+    "dtype": "q8",
+    "inference": "local",
+    "dimensions": 384,
+    "offline": true
+  },
+  "sampleSHA256": "f47264064458af42e2ad5b7eb1fcbf52bd732492e0b3867606d7c6b7a87d484b",
+  "summary": {
+    "rows": 12,
+    "candidates": 2,
+    "semanticCandidates": 1,
+    "exactCandidates": 1
+  },
+  "candidates": [
+    {
+      "id": "pair-7-8",
+      "kind": "exact",
+      "similarity": 1,
+      "leftId": "TC-007",
+      "rightId": "TC-007",
+      "leftSourceRow": 7,
+      "rightSourceRow": 8
+    },
+    {
+      "id": "pair-2-3",
+      "kind": "semantic",
+      "similarity": 0.9307,
+      "leftId": "NS-201",
+      "rightId": "NS-218",
+      "leftSourceRow": 2,
+      "rightSourceRow": 3
+    }
+  ],
+  "firstRun": {
+    "timing": {
+      "totalMs": 232
+    },
+    "stages": [
+      {
+        "name": "Parse CSV",
+        "durationMs": 1
+      },
+      {
+        "name": "Validate invoices",
+        "durationMs": 0
+      },
+      {
+        "name": "Embed descriptions locally",
+        "durationMs": 220
+      },
+      {
+        "name": "Build review queue",
+        "durationMs": 1
+      }
+    ]
+  },
+  "secondRun": {
+    "timing": {
+      "totalMs": 37
+    },
+    "stages": [
+      {
+        "name": "Parse CSV",
+        "durationMs": 0
+      },
+      {
+        "name": "Validate invoices",
+        "durationMs": 0
+      },
+      {
+        "name": "Embed descriptions locally",
+        "durationMs": 33
+      },
+      {
+        "name": "Build review queue",
+        "durationMs": 1
+      }
+    ]
+  },
+  "modelAssets": [
+    {
+      "file": "config.json",
+      "bytes": 650,
+      "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 366,
+      "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+    },
+    {
+      "file": "onnx/model_quantized.onnx",
+      "bytes": 22972370,
+      "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1"
+    }
+  ]
+}
